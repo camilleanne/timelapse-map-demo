@@ -11,31 +11,34 @@
   #map { position:absolute; top:0; bottom:0; width:100%;}
   .year { 
 	  		display: inline-block;
-	  		background-color: #A5D6E2; 
-	  		padding: 10px; margin: 10px; 
-	  		position: absolute;
-	  		right: 10%; width: 20%;
-	  		z-index: 10; 
+			background-color: #A5D6E2;
+			padding: 10px; margin: 10px;
+			position: absolute;
+			right: 10%; width: 20%;
+			z-index: 10; /* keeps the slider above the map */
+			-webkit-border-radius: 10px; /* rounds the corners of the box */
+			-moz-border-radius: 10px;
+			border-radius: 10px;
 	  	}
   input#yearSlider { width: 70%; }
   #yearMin, #yearMax { width: 10%; }
-  #yearValue { margin: 0 50% 0 50%; }
+  label { font-weight: bold; }
+  .legend { font-size: .9em; }
 </style>
 </head>
 <body>
 <div class='year'>
-	<label for='year'>Select year: </label>
+	<label for='year'>Select year: </label> <span id='yearValue'>2000</span>
 	<div class='slider'>
-		<span id='yearMin'>1964</span>
+		<span id='yearMin' class='legend'>1964</span>
 		<input id='yearSlider' type='range' min='1964' max='2014' value='2000' step='1' />
-		<span id='yearMax'>2014</span>	
+		<span id='yearMax' class='legend'>2014</span>
 	</div>
-	<span id='yearValue'>2000</span>
 </div>
 <div id='map'></div>
 <script>
 var map = L.map('map').setView([37.75, -122.4], 10);
-var mapid = "camilleanne.c71d667b";
+var mapid = "use own mapid here";
 
 L.tileLayer('http://{s}.tiles.mapbox.com/v3/'+mapid+'/{z}/{x}/{y}.png', {
     attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
@@ -44,7 +47,9 @@ L.tileLayer('http://{s}.tiles.mapbox.com/v3/'+mapid+'/{z}/{x}/{y}.png', {
 
 var slider = document.getElementById('yearSlider');
 var year = document.getElementById('yearValue');
-slider.addEventListener('change', function(){ year.innerHTML = slider.value; })
+slider.addEventListener('input', function(){
+	 year.innerHTML = slider.value;
+	});
 
 </script>
 </body>
