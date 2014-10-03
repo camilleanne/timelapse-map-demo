@@ -7,28 +7,37 @@
 <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
  <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
 <style>
-  body { margin:0; padding:0; font-family: sans-serif;}
-  #map { position:absolute; top:0; bottom:0; width:100%;}
-  .year { 
+	body  { margin:0; padding:0; font-family: sans-serif; }
+	#map  { position:absolute; top:0; bottom:0; width:100%; }
+	.year {
 	  		display: inline-block;
 			background-color: #A5D6E2;
-			padding: 10px; margin: 10px;
+			margin: 10px;
 			position: absolute;
 			right: 10%; width: 20%;
 			z-index: 10; /* keeps the slider above the map */
 			-webkit-border-radius: 10px; /* rounds the corners of the box */
 			-moz-border-radius: 10px;
 			border-radius: 10px;
-	  	}
-  input#yearSlider { width: 70%; }
-  #yearMin, #yearMax { width: 10%; }
-  label { font-weight: bold; }
-  .legend { font-size: .9em; }
+		  }
+	#slider-top {
+			background-color: white;
+			padding: 10px 10px 5px 10px;
+			border-radius: 10px 10px 0 0;
+		  }
+	.slider { padding: 10px; }
+	input#yearSlider { width: 70%; }
+	#yearMin, #yearMax { width: 10%; }
+	label { font-weight: bold; }
+	.legend { font-size: .9em; }
 </style>
 </head>
 <body>
 <div class='year'>
-	<label for='year'>Select year: </label> <span id='yearValue'>2000</span>
+	<section id='slider-top'>
+		<label for='year'>Year: </label>
+		<span id='yearValue'>2000</span>
+	</section>
 	<div class='slider'>
 		<span id='yearMin' class='legend'>1964</span>
 		<input id='yearSlider' type='range' min='1964' max='2014' value='2000' step='1' />

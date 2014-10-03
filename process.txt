@@ -1,4 +1,6 @@
 1. Get earthquake data here: http://www.data.scec.org/eq-catalogs/date_mag_loc.php
 2. Request data as KML
 3. `ogr2ogr -f 'GeoJSON' sf-earthquakes.json SearchResults.kml`
-4. 
+4. Create basic map (map.html)
+5. Add slider for date control (map1.html)
+6. Add data
